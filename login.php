@@ -2,7 +2,7 @@
 require('connect.php');
 session_start();
 $errorMessage="";
-$select=mysqli_query($db,"SELECT email,password FROM customer");
+$select=mysqli_query($db,"SELECT email,password FROM users");
 
 if(isset($_POST['btnlogin'])) {
   $email=$_POST['email'];

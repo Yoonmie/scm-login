@@ -11,7 +11,7 @@
 <?php
   require ('connect.php');
   $id=$_GET['cid'];
-  $select=mysqli_query($db,"SELECT * FROM customer WHERE customerid=$id");
+  $select=mysqli_query($db,"SELECT * FROM users WHERE id=$id");
   $row=mysqli_fetch_assoc($select);
 ?>
 
@@ -23,7 +23,7 @@
        <label for="name" class="col-4">Name</label>
       </div>
       <div class="col-7">
-        <input type="text" name="name" class="form-control" value="<?php echo $row['customername'] ?>">
+        <input type="text" name="name" class="form-control" value="<?php echo $row['name'] ?>">
       </div>
     </div>
 

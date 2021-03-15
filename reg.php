@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <title>Document</title>
+  <title>User Registraton Form</title>
 </head>
 <body class="bg-light">
 
@@ -18,16 +18,16 @@
   if(isset($_REQUEST['status'])){
   $status=$_REQUEST['status'];
     if($status==1){
-    echo "<div class='alert alert-success'>Data Registration Success!</div>";
+    echo "<div class='alert alert-success'>User Registration Success!</div>";
     }elseif($status==2){
-    echo "<div class='alert alert-success'>Data Updated Successfully!</div>";
+    echo "<div class='alert alert-success'>User Updated Successfully!</div>";
     }elseif($status==3){
-    echo "<div class='alert alert-danger'>Data Deleted Successfully!</div>";
+    echo "<div class='alert alert-danger'>User Deleted Successfully!</div>";
     }
   }
 ?>
   <form action="insertdata.php" method="post">
-    <h1 class="text-center mb-3">Registration Form</h1>
+    <h1 class="text-center mb-3">User Registration Form</h1>
     <div class="form-group row offset-1">
       <div class="col-3">
        <label for="name" class="col-4">Name</label>
@@ -61,21 +61,23 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Password</th>
+      <th scope="col">Time</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
   <?php 
-  require('connect.php');
-    $select=mysqli_query($db,"SELECT * FROM customer");
+    require('connect.php');
+    $select=mysqli_query($db,"SELECT * FROM users");
     while($row=mysqli_fetch_assoc($select)):
   ?>
     <tr>
-      <th scope="row"><?php echo $row['customerid'] ?></th>
-      <td><?php echo $row['customername'] ?></td>
+      <th scope="row"><?php echo $row['id'] ?></th>
+      <td><?php echo $row['name'] ?></td>
       <td><?php echo $row['email'] ?></td>
       <td><?php echo $row['password'] ?></td>
-      <td><a href="editdata.php?cid=<?php echo $row['customerid'] ?>" class="btn btn-primary mr-2">Edit</a><a href="deletedata.php?cid=<?php echo $row['customerid'] ?>" class="btn btn-danger">Delete</a></td>
+      <td><?php echo $row['created_date_time'] ?></td>
+      <td><a href="editdata.php?cid=<?php echo $row['id'] ?>" class="btn btn-primary mr-2">Edit</a><a href="deletedata.php?cid=<?php echo $row['id'] ?>" class="btn btn-danger">Delete</a></td>
     </tr>
     <?php endwhile; ?>
   </tbody>
