@@ -4,6 +4,14 @@
 - [Home](#home)
 - [Logout](#logout)
 
+
+## Steps
+
+- Copy clone link
+- Add this project into the system from terminal (git clone url, cd folder)
+- Open the project into code editor
+
+
 ## register
 
 Here is a register page. Need to register the account before logging in.

@@ -1,8 +1,9 @@
 <?php
 require('connect.php');
 session_start();
+$id="";
 $errorMessage="";
-$select=mysqli_query($db,"SELECT email,password FROM users");
+$select=mysqli_query($db,"SELECT * FROM users");
 
 if(isset($_POST['btnlogin'])) {
   $email=$_POST['email'];
@@ -14,7 +15,9 @@ if(isset($_POST['btnlogin'])) {
       if($email==$row['email'] && $password==$row['password'])
       {
         $_SESSION['login']=true;
-        header("Location: home.php");
+        $_SESSION['userid']=$row['id'];
+        $_SESSION['username']=$row['name'];
+        header("Location:home.php");
       } 
       else{
         $errorMessage='LogIn Failed';
@@ -38,6 +41,7 @@ if(isset($_POST['btnlogin'])) {
   </style>
 </head>
 <body class="bg-light">
+
 <div class="container rounded-lg col-lg-6  col-sm-10  col-10 mt-5">
 <?php if(isset($_POST['btnlogin'])) { ?>
   <div class="alert alert-danger">
