@@ -71,7 +71,7 @@ if($_SESSION['login']==false)
     $post_result = mysqli_query($db, "SELECT posts.*,users.name FROM posts LEFT JOIN users ON posts.user_id=users.id"); 
     while($postrow = mysqli_fetch_assoc($post_result)): 
     $postid= $postrow['id'];
-    ?>  
+    ?> 
      <table class="border rounded-lg col-12 mt-5 table">
       <tr class="blog-ttl">
         <th class="bg-light">
@@ -84,15 +84,19 @@ if($_SESSION['login']==false)
       </tr>
       <tr><td><p><?php echo $postrow['body'] ,$_SESSION['username'],$_SESSION['userid']?></p></td></tr>
       <tr>
+        
         <td class="">
+        <form method="POST">
         <div class="input-group mb-3 text-area">
           <textarea name="cmt" id="comment" rows="1">
           </textarea>
-          <button class="cmt-icn" name="cmt-icn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+          <button class="cmt-icn" name="cmt-icn<?php echo $postid ?>" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
           <!-- <a href="#" class="cmt-icn"><i class="fa fa-paper-plane" aria-hidden="true"></i></a> -->
         </div>
+
         <?php 
              if(isset($_POST['cmt-icn'.$postid])){
+               echo "sss";
                echo $_POST['cmt-icn'.$postid];
                 $postcomment= $_POST['cmt'];
                 $userid=$_SESSION['userid'];
@@ -100,9 +104,12 @@ if($_SESSION['login']==false)
                 mysqli_query($db, $insertcmt); 
              }
           ?>    
+     
+     </form>
             
      
         </td>
+        
       </tr>
       
       

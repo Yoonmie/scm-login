@@ -8,8 +8,11 @@
 ## Steps
 
 - Copy clone link
-- Add this project into the system from terminal (git clone url, cd folder)
+- Add this project into the htdocs of xampp folder from terminal 
+  - git clone url(clone link)
+  - cd folder
 - Open the project into code editor
+- Run the project 
 
 
 ## register
