@@ -39,24 +39,32 @@
   position: relative;
   width: 100%;
 }
+#home .overflow-auto {
+  overflow-y: scroll;
+    height: 155px;
+}
+#home .comment-session {
+  width: 95%;
+}
 #home .text-area textarea {
   width: 97%; 
   border:lightgray thin solid;
   outline: none;
 }
 #home .cmt-icn {
-  display: inline;
+  display: block;
   position: absolute;
   bottom: 0;
   right: -3px;
   width: 30px;
   height: 30px;
   background-color: #0087d1;
-  text-align: center;
   color: #fff;
-  line-height: 30px;
   border-radius: 5px;
+  line-height: 30px;
+  text-align: center;
 }
+
 
 #home .icn-list .icn-close {
   color: white;

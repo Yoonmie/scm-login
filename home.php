@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('connect.php');
 if($_SESSION['login']==false)
 {
   header("Location: login.php");
@@ -88,22 +89,38 @@ if($_SESSION['login']==false)
         <td class="">
         <form method="POST">
         <div class="input-group mb-3 text-area">
-          <textarea name="cmt" id="comment" rows="1">
-          </textarea>
-          <button class="cmt-icn" name="cmt-icn<?php echo $postid ?>" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+          <textarea name="cmt" id="comment" rows="1"></textarea>
+          <button class="btn cmt-icn" name="cmt-icn<?php echo $postid ?>" type="submit"><i class="fa fa-paper-plane arrow-icn" aria-hidden="true"></i></button>
           <!-- <a href="#" class="cmt-icn"><i class="fa fa-paper-plane" aria-hidden="true"></i></a> -->
         </div>
 
         <?php 
-             if(isset($_POST['cmt-icn'.$postid])){
-               echo "sss";
-               echo $_POST['cmt-icn'.$postid];
-                $postcomment= $_POST['cmt'];
-                $userid=$_SESSION['userid'];
-                $insertcmt = "INSERT INTO comments (user_id, post_id, body) VALUES ('$userid', '$postid', '$postcomment')";
-                mysqli_query($db, $insertcmt); 
-             }
-          ?>    
+        require('connect.php');
+          if(isset($_POST['cmt-icn'.$postid])){
+            echo $_POST['cmt-icn'.$postid];
+            $postcomment= $_POST['cmt'];
+            $userid=$_SESSION['userid'];
+            $insertcmt = "INSERT INTO comments (user_id, post_id, body) VALUES ('$userid', '$postid', '$postcomment')";
+            mysqli_query($db, $insertcmt); 
+        }?>
+      <div class="overflow-auto">
+        <?php
+        $cmtselect = mysqli_query($db, "SELECT comments.*,users.name from comments join users on users.id=comments.user_id join posts on posts.id=comments.post_id");
+        while($cmtrow=mysqli_fetch_assoc($cmtselect)):
+         if($cmtrow['post_id']==$postrow['id']){?>
+         
+          <div class="form-group border comment-session">
+            <a href="#"> <?php echo $cmtrow['name'];?></a>
+            <p><?php  print_r($cmtrow['body']);?></p> 
+            </div>
+         
+          
+         
+        <?php }
+        endwhile; ?>
+        </div>
+        
+   
      
      </form>
             
