@@ -5,7 +5,6 @@ if($_SESSION['login']==false)
 {
   header("Location: login.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +19,7 @@ if($_SESSION['login']==false)
   <title>Home Page</title>
 </head>
 <body id="home">
-<form action="home.php" method="post">
+<form action="post.php" method="post">
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,11 +49,11 @@ if($_SESSION['login']==false)
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a href="logout.php" class="btn btn-primary">Logout</a>
+        <a href="admin/logout.php" class="btn btn-primary">Logout</a>
       </form>
     </div>
   </nav>
-
+<!--nav--->
 <div class="container border col-lg-10 col-sm-12 col-12 main">
   <div class="input-group add-list mt-5">
     <input type="text" class="form-control" placeholder="Search this blog">
@@ -63,12 +62,13 @@ if($_SESSION['login']==false)
         <i class="fa fa-search"></i>
       </button>
     </div>
-    <a href="addpost.php" class="btn btn-info search offset-1">Add Post</a>
+    <a href="admin/post-create.php" class="btn btn-info search offset-1">Add Post</a>
   </div>
+<!---add post list--->
 
- 
   <?php 
     require('connect.php');
+    $userid=$_SESSION['userid'];
     $post_result = mysqli_query($db, "SELECT posts.*,users.name FROM posts LEFT JOIN users ON posts.user_id=users.id"); 
     while($postrow = mysqli_fetch_assoc($post_result)): 
     $postid= $postrow['id'];
@@ -77,21 +77,25 @@ if($_SESSION['login']==false)
       <tr class="blog-ttl">
         <th class="bg-light">
           <h3 class="ttl-name"><?php echo $postrow['title']?></h3> <h5>published by <?php echo $postrow['name']?></h5>
-          <span class="icn-list clearFix">
+          <span class="icn-list clearFix" 
+          <?php 
+             if($userid!=$postrow['user_id']) { ?>
+             style="display: none;"
+            <?php }
+          ?>>
           <a href="#" class="icn-close"> <i class="fa fa-times" aria-hidden="true"></i> </a>
-          <a href="#" class="icn-edit"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
+          <a href="admin/post-show.php?postid=<?php echo $postrow['id'] ?>" class="icn-edit"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
           </span>
         </th>
       </tr>
       <tr><td><p><?php echo $postrow['body'] ,$_SESSION['username'],$_SESSION['userid']?></p></td></tr>
-      <tr>
-        
-        <td class="">
+      <tr> 
+        <td>
         <form method="POST">
         <div class="input-group mb-3 text-area">
           <textarea name="cmt" id="comment" rows="1"></textarea>
           <button class="btn cmt-icn" name="cmt-icn<?php echo $postid ?>" type="submit"><i class="fa fa-paper-plane arrow-icn" aria-hidden="true"></i></button>
-          <!-- <a href="#" class="cmt-icn"><i class="fa fa-paper-plane" aria-hidden="true"></i></a> -->
+          <!-- <a href="#" class="cmt-icn" name="cmt-icn?php echo $postid ?>"><i class="fa fa-paper-plane" aria-hidden="true"></i></a> -->
         </div>
 
         <?php 
@@ -108,31 +112,19 @@ if($_SESSION['login']==false)
         $cmtselect = mysqli_query($db, "SELECT comments.*,users.name from comments join users on users.id=comments.user_id join posts on posts.id=comments.post_id");
         while($cmtrow=mysqli_fetch_assoc($cmtselect)):
          if($cmtrow['post_id']==$postrow['id']){?>
-         
           <div class="form-group border comment-session">
             <a href="#"> <?php echo $cmtrow['name'];?></a>
             <p><?php  print_r($cmtrow['body']);?></p> 
             </div>
-         
-          
-         
         <?php }
         endwhile; ?>
         </div>
-        
-   
-     
      </form>
-            
-     
-        </td>
-        
+        </td> 
       </tr>
-      
-      
       </table>
       <?php endwhile; ?>
-   
+      <!--table--> 
 </div> 
   
 

@@ -1,4 +1,4 @@
-# scm-login
+# scm_blog
 - [Register](#reg)
 - [Login](#login)
 - [Home](#home)

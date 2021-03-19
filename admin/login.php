@@ -1,5 +1,5 @@
 <?php
-require('connect.php');
+require('../connect.php');
 session_start();
 $id="";
 $errorMessage="";
@@ -11,16 +11,24 @@ if(isset($_POST['btnlogin'])) {
 
   if($email!=null && $password!=null)
   {
-    while($row=mysqli_fetch_assoc($select)){
-      if($email==$row['email'] && $password==$row['password'])
-      {
-        $_SESSION['login']=true;
-        $_SESSION['userid']=$row['id'];
-        $_SESSION['username']=$row['name'];
-        header("Location:home.php");
-      } 
-      else{
-        $errorMessage='LogIn Failed';
+    if($email=="admin@admin.com" && $password=="secret")
+    {
+      $_SESSION['row']="admin";
+      $_SESSION['username']="admin";
+      header("Location:post-list.php");
+    }
+    else{
+      while($row=mysqli_fetch_assoc($select)){
+        if($email==$row['email'] && $password==$row['password'])
+        {
+          $_SESSION['row']="author";
+          $_SESSION['userid']=$row['id'];
+          $_SESSION['username']=$row['name'];
+          header("Location:post-list.php");
+        } 
+        else{
+          $errorMessage='LogIn Failed';
+        }
       }
     }
   }

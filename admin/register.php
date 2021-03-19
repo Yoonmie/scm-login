@@ -1,5 +1,5 @@
 <?php
-  require ('connect.php');
+  require ('../connect.php');
   session_start();
 ?>
 <!DOCTYPE html>
@@ -23,10 +23,12 @@
     echo "<div class='alert alert-success'>User Updated Successfully!</div>";
     }elseif($status==3){
     echo "<div class='alert alert-danger'>User Deleted Successfully!</div>";
+    }else{
+      echo "<div class='alert alert-danger'>Please Fill the forms.</div>";
     }
   }
 ?>
-  <form action="insertdata.php" method="post">
+  <form action="user-create.php" method="post">
     <h1 class="text-center mb-3">User Registration Form</h1>
     <div class="form-group row offset-1">
       <div class="col-3">
@@ -67,7 +69,7 @@
   </thead>
   <tbody>
   <?php 
-    require('connect.php');
+    require('../connect.php');
     $select=mysqli_query($db,"SELECT * FROM users");
     while($row=mysqli_fetch_assoc($select)):
   ?>
@@ -77,7 +79,7 @@
       <td><?php echo $row['email'] ?></td>
       <td><?php echo $row['password'] ?></td>
       <td><?php echo $row['created_date_time'] ?></td>
-      <td><a href="editdata.php?cid=<?php echo $row['id'] ?>" class="btn btn-primary mr-2">Edit</a><a href="deletedata.php?cid=<?php echo $row['id'] ?>" class="btn btn-danger">Delete</a></td>
+      <td><a href="user-show.php?cid=<?php echo $row['id'] ?>" class="btn btn-primary mr-2">Edit</a><a href="user-delete.php?cid=<?php echo $row['id'] ?>" class="btn btn-danger">Delete</a></td>
     </tr>
     <?php endwhile; ?>
   </tbody>

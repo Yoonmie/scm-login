@@ -1,3 +1,9 @@
+<?php
+  require ('../connect.php');
+  $id=$_GET['cid'];
+  $select=mysqli_query($db,"SELECT * FROM users WHERE id=$id");
+  $row=mysqli_fetch_assoc($select);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +14,8 @@
   <title>Document</title>
 </head>
 <body class="bg-light">
-<?php
-  require ('connect.php');
-  $id=$_GET['cid'];
-  $select=mysqli_query($db,"SELECT * FROM users WHERE id=$id");
-  $row=mysqli_fetch_assoc($select);
-?>
-
 <div class="container col-lg-8 col-sm-10 mt-3">
-  <form action="update.php" method="post">
+  <form action="user-edit.php" method="post">
     <h1 class="text-center mb-3">Edit Form</h1>
     <div class="form-group row offset-1">
       <div class="col-3">

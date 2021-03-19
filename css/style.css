@@ -1,4 +1,3 @@
-
 .clearFix:after {
   content: "";
   display: block;
@@ -12,7 +11,14 @@
 /* .blog-ttl .ttl-name {
   float: left;
 } */
-
+#home .blog-ttl .username-ttl a {
+  color: #031f2e;
+  font-size: 24px;
+}
+/* #home.blog-ttl a{
+  color: red;
+  float: left;
+} */
 #home .main {
   margin-top: 95px;
 }
@@ -41,7 +47,7 @@
 }
 #home .overflow-auto {
   overflow-y: scroll;
-    height: 155px;
+  max-height: 155px;
 }
 #home .comment-session {
   width: 95%;
@@ -63,6 +69,11 @@
   border-radius: 5px;
   line-height: 30px;
   text-align: center;
+}
+#arrow-icn {
+  position: absolute;
+  left: 5px;
+  top: 7px;
 }
 
 

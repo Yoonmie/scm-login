@@ -1,11 +1,11 @@
 <?php
 session_start();
 $errorMessage="";
-if($_SESSION['login']==false) {
+if($_SESSION['row']=="") {
   header("Location:login.php");
 }
 else {
-  unset($_SESSION['login']);
+  unset($_SESSION['row']);
   header("Location:login.php");
 }
 ?>
