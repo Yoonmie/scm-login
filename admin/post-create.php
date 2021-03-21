@@ -1,14 +1,28 @@
 <?php
-if(isset($_POST['submit'])){
-  session_start();
-  require ('../connect.php');
-  $title=$_POST['title'];
-  $text=$_POST['text'];
-  $id=$_SESSION['userid'];
-  $insertpost="INSERT INTO posts (title,body,user_id) VALUES ('$title','$text','$id')";
-  $ret=mysqli_query($db,$insertpost);
-  header("Location:../post.php");
+session_start();
+require ('../connect.php');
+if($_SESSION['row']!=null)
+{
+    if(isset($_POST['submit'])){
+        $title=$_POST['title'];
+        $text=$_POST['text'];
+        $id=$_SESSION['userid'];
+        $insertpost="INSERT INTO posts (title,body,user_id) VALUES ('$title','$text','$id')";
+        $ret=mysqli_query($db,$insertpost);
+        if($_SESSION['row']=="admin"){
+            header("Location:index.php");
+        }
+        else{
+            header("Location:post-list.php");
+        }
+        
+      }
+    
 }
+else{
+    header("Location: login.php");
+}
+
 ?>
 
 <!DOCTYPE html>

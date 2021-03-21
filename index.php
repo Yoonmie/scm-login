@@ -53,7 +53,7 @@ require('connect.php');
 <div class="bnr">
   <img src="img/bnr-1.jpg" class="img-fluid" alt="Responsive image" width="100%">
 </div>
-<div class="container border col-lg-10 col-sm-12 col-12 main">
+<div class="container col-lg-10 col-sm-12 col-12 main">
   <div class="input-group add-list mt-5">
     <input type="text" class="form-control" placeholder="Search this blog">
     <div class="input-group-append">
@@ -67,7 +67,7 @@ require('connect.php');
 
   <?php 
     require('connect.php');
-    $userid=$_SESSION['userid'];
+    // $userid=$_SESSION['userid'];
     $post_result = mysqli_query($db, "SELECT posts.*,users.name FROM posts LEFT JOIN users ON posts.user_id=users.id ORDER BY updated_date_time DESC"); 
     while($postrow = mysqli_fetch_assoc($post_result)): 
     $postid= $postrow['id'];
@@ -77,16 +77,8 @@ require('connect.php');
         <th class="bg-light">
           <img src="img/bnr-2.JPG" class="rounded-circle user-pic mr-3" alt="user-pic" style="width:50px; height: 50px;">
           <!-- <h3 class="ttl-name">?php echo $postrow['title']?></h3> <h5>published by ?php echo $postrow['name']?></h5> -->
-          <span class="username-ttl"><a href="#"><?php echo $postrow['name']?></a></span>
-          <span class="icn-list clearFix" 
-          <?php 
-             if($userid!=$postrow['user_id']) { ?>
-             style="display: none;"
-            <?php }
-          ?>>
-          <a href="#" class="icn-close"> <i class="fa fa-times" aria-hidden="true"></i> </a>
-          <a href="admin/post-show.php?postid=<?php echo $postrow['id'] ?>" class="icn-edit"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
-          </span>
+          <span class="username-ttl"><a href="post.php?uid=<?php echo $postrow['user_id']?>"><?php echo $postrow['name']?></a></span>
+          
         </th>
       </tr>
       <tr>
@@ -95,7 +87,7 @@ require('connect.php');
             <img src="img/bnr-2.JPG"  class="col-lg-6 col-sm-12 col-12" alt="post-img" style="width:100%; height: auto;">
             <div class="bodylist col-lg-6 col-sm-12 col-12">
             <h3><?php echo $postrow['title']?></h3>
-            <p><?php echo $postrow['body'] ,$_SESSION['username'],$_SESSION['userid']?></p>
+            <p><?php echo $postrow['body'] ?></p>
             </div>
           </div>
         </td>
@@ -103,11 +95,7 @@ require('connect.php');
       <tr> 
         <td>
         <form method="POST">
-        <div class="input-group mb-3 text-area">
-          <textarea name="cmt" id="comment" rows="1"></textarea>
-          <button class="btn cmt-icn" name="cmt-icn<?php echo $postid ?>" type="submit"><i class="fa fa-paper-plane arrow-icn" aria-hidden="true" id="arrow-icn"></i></button>
-          <!-- <a href="#" class="cmt-icn" name="cmt-icn?php echo $postid ?>"><i class="fa fa-paper-plane" aria-hidden="true"></i></a> -->
-        </div>
+        <span><h5>Comments</h5></span>
 
         <?php 
         require('connect.php');

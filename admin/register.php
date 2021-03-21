@@ -56,7 +56,7 @@
     </div>
       <button class="btn btn-primary offset-5" name="btn-reg">Register</button>
   </form>
-<table class="table border table-striped mt-4">
+<!-- <table class="table border table-striped mt-4">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -83,7 +83,7 @@
     </tr>
     <?php endwhile; ?>
   </tbody>
-</table>
+</table> -->
 </div>
  
 </body>

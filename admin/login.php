@@ -15,7 +15,8 @@ if(isset($_POST['btnlogin'])) {
     {
       $_SESSION['row']="admin";
       $_SESSION['username']="admin";
-      header("Location:post-list.php");
+      $_SESSION['userid']=11;
+      header("Location:index.php");
     }
     else{
       while($row=mysqli_fetch_assoc($select)){

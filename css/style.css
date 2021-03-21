@@ -5,20 +5,22 @@
   visibility: hidden;
   font-size: 0;
 }
+
 #home .blog-ttl {
   position: relative;
 }
-/* .blog-ttl .ttl-name {
-  float: left;
-} */
+
 #home .blog-ttl .username-ttl a {
   color: #031f2e;
   font-size: 24px;
 }
-/* #home.blog-ttl a{
-  color: red;
-  float: left;
-} */
+
+#home .bodylist{
+  word-wrap: break-word;
+}
+#home table tr:last-child{
+  background-image: linear-gradient(rgb(184 207 231 / 25%),  rgb(215 228 242 / 12%)); 
+}
 #home .main {
   margin-top: 95px;
 }
@@ -51,6 +53,7 @@
 }
 #home .comment-session {
   width: 95%;
+  word-wrap: break-word;
 }
 #home .text-area textarea {
   width: 97%; 
