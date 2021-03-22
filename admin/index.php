@@ -86,11 +86,9 @@ else{
       <tr class="blog-ttl">
         <th class="bg-light">
           <img src="../img/bnr-2.JPG" class="rounded-circle user-pic mr-3" alt="user-pic" style="width:50px; height: 50px;">
-          <!-- <h3 class="ttl-name">?php echo $postrow['title']?></h3> <h5>published by ?php echo $postrow['name']?></h5> -->
           <span class="username-ttl"><a href="#"><?php echo $postrow['name']?></a></span>
-          <span class="icn-list clearFix" 
-         >
-          <a href="#" class="icn-close"> <i class="fa fa-times" aria-hidden="true"></i> </a>
+          <span class="icn-list clearFix">
+          <a href="post-delete.php?postid=<?php echo $postrow['id'] ?>" class="icn-close"> <i class="fa fa-times" aria-hidden="true"></i> </a>
           <a href="post-show.php?postid=<?php echo $postrow['id'] ?>" class="icn-edit"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
           </span>
         </th>
@@ -113,7 +111,6 @@ else{
         <div class="input-group mb-3 text-area">
           <textarea name="cmt" id="comment" rows="1"></textarea>
           <button class="btn cmt-icn" name="cmt-icn<?php echo $postid ?>" type="submit"><i class="fa fa-paper-plane arrow-icn" aria-hidden="true" id="arrow-icn"></i></button>
-          <!-- <a href="#" class="cmt-icn" name="cmt-icn?php echo $postid ?>"><i class="fa fa-paper-plane" aria-hidden="true"></i></a> -->
         </div>
 
         <?php 

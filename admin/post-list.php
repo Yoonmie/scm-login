@@ -90,7 +90,7 @@ if($_SESSION['row']=="")
              style="display: none;"
             <?php }
           ?>>
-          <a href="#" class="icn-close"> <i class="fa fa-times" aria-hidden="true"></i> </a>
+          <a href="post-delete.php?postid=<?php echo $postrow['id']?>" class="icn-close"> <i class="fa fa-times" aria-hidden="true"></i> </a>
           <a href="post-show.php?postid=<?php echo $postrow['id'] ?>" class="icn-edit"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
           </span>
         </th>

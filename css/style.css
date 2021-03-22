@@ -53,6 +53,7 @@
 }
 #home .comment-session {
   width: 95%;
+  background-color: #ffffffd4;
   word-wrap: break-word;
 }
 #home .text-area textarea {
