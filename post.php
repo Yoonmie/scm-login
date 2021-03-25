@@ -1,10 +1,6 @@
 <?php
 session_start();
 require('connect.php');
-// if($_SESSION['login']==false)
-// {
-//   header("Location: login.php");
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,9 +9,8 @@ require('connect.php');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
   <title>Home Page</title>
 </head>
 <body id="home">
@@ -64,7 +59,7 @@ require('connect.php');
     </div>
     <a href="admin/post-create.php" class="btn btn-info search offset-1">Add Post</a>
   </div>
-<!---add post list--->
+<!---search and add post list--->
 
   <?php 
     require('connect.php');
@@ -72,17 +67,14 @@ require('connect.php');
     $post_result = mysqli_query($db, "SELECT posts.*,users.name FROM posts LEFT JOIN users ON posts.user_id=users.id WHERE posts.user_id=$userid ORDER BY updated_date_time DESC"); 
     while($postrow = mysqli_fetch_assoc($post_result)): 
     $postid= $postrow['id'];
-    if($userid==$postrow['user_id']):
     ?> 
      <table class="border rounded-lg col-12 mt-5 table">
       <tr class="blog-ttl">
         <th class="bg-light">
           <img src="img/bnr-2.JPG" class="rounded-circle user-pic mr-3" alt="user-pic" style="width:50px; height: 50px;">
           <span class="username-ttl"><a href="post.php?uid=<?php echo $postrow['user_id']?>"><?php echo $postrow['name']?></a></span>
-          
         </th>
       </tr>
-      <?php endif;?>
       <tr>
         <td class="form-group blog-body">
           <div class="row">
@@ -134,6 +126,6 @@ require('connect.php');
   
 </form>
 </body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 </html>
