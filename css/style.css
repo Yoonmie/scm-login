@@ -33,12 +33,12 @@
 }
 #home .icn-list .icn-edit {
   color: white;
-  width: 50px;
+  width: 40px;
   background-color: #0087d1;
-  height: 50px;
+  height: 40px;
   float: right;
   text-align: center;
-  line-height: 50px;
+  line-height: 40px;
 }
 #home .icn-list .icn-edit:hover {
   background-color: #05285c;
@@ -83,12 +83,12 @@
 
 #home .icn-list .icn-close {
   color: white;
-  width: 50px;
+  width: 40px;
   background-color: #f30d1d;
-  height: 50px;
+  height: 40px;
   float: right;
   text-align: center;
-  line-height: 50px;
+  line-height: 40px;
   margin-left: 3px;
 }
 #home .icn-list .icn-close:hover {

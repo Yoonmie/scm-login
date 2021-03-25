@@ -6,7 +6,8 @@
   if($name!=null && $email!=null && $pw!=null){
     $insert="insert into users (name,email,password) values ('$name','$email','$pw')";
     $ret=mysqli_query($db,$insert);
-    header("Location:register.php?status=1");
+    // header("Location:register.php?status=1");
+    header("Location:login.php");
   }
   else {
     header("Location:register.php?status=4");

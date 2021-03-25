@@ -2,7 +2,6 @@
 require('../connect.php');
 session_start();
 $post_id=$_GET['postid'];
-echo $post_id.$_SESSION['row'];
 $postselect=mysqli_query($db,"SELECT * FROM posts WHERE id=$post_id");
 $row=mysqli_fetch_assoc($postselect);
 ?>

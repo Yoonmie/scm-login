@@ -73,15 +73,15 @@ if($_SESSION['row']=="")
   <?php 
     require('../connect.php');
     $userid=$_SESSION['userid'];
-    $post_result = mysqli_query($db, "SELECT posts.*,users.name FROM posts LEFT JOIN users ON posts.user_id=users.id ORDER BY updated_date_time DESC"); 
+    $post_result = mysqli_query($db, "SELECT posts.*,users.name,users.id AS userid FROM posts LEFT JOIN users ON posts.user_id=users.id ORDER BY updated_date_time DESC"); 
     while($postrow = mysqli_fetch_assoc($post_result)): 
     $postid= $postrow['id'];
-    ?> 
+?> 
      <table class="border rounded-lg col-12 mt-5 table">
       <tr class="blog-ttl">
         <th class="bg-light">
-          <img src="../img/bnr-2.JPG" class="rounded-circle user-pic mr-3" alt="user-pic" style="width:50px; height: 50px;">
-          <span class="username-ttl"><a href="#"><?php echo $postrow['name']?></a></span>
+         
+          <span class="username-ttl"><a href="../post.php?uid=<?php echo $postrow['userid']?>"><?php echo $postrow['name']?></a></span>
           <span class="icn-list clearFix" 
           <?php 
              if($userid!=$postrow['user_id']) { ?>
@@ -95,13 +95,10 @@ if($_SESSION['row']=="")
       </tr>
       <tr>
         <td class="form-group blog-body">
-          <div class="row">
-            <img src="../img/bnr-2.JPG"  class="col-lg-6 col-sm-12 col-12" alt="post-img" style="width:100%; height: auto;">
-            <div class="bodylist col-lg-6 col-sm-12 col-12">
+            <div class="bodylist p-3">
             <h3 class="pb-3"><?php echo $postrow['title']?></h3>
             <p><?php echo $postrow['body'] ,$_SESSION['username'],$_SESSION['userid']?></p>
             </div>
-          </div>
         </td>
       </tr>
       <tr> 
@@ -128,9 +125,9 @@ if($_SESSION['row']=="")
         while($cmtrow=mysqli_fetch_assoc($cmtselect)):
          if($cmtrow['post_id']==$postrow['id']){?>
           <div class="form-group border comment-session pl-3">
-            <img src="../img/bnr-2.JPG" class="rounded-circle user-pic mr-1 mt-2" alt="user-pic" style="width:30px; height: 30px;">
+           
             <span><a href="#"><?php echo $cmtrow['name']?></a></span>
-            <p class="ml-5"><?php  print_r($cmtrow['body']);?></p> 
+            <p class="ml-2"><?php  print_r($cmtrow['body']);?></p> 
             </div>
         <?php }
         endwhile; ?>
