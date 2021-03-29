@@ -67,8 +67,8 @@ This page is for deleting user data. Only admin can delete the data.
 ## login
 
 Here is a login page. If not u cannot log into the account and go to home page.
- * For admin = username=admin@admin.com & password=secret
- * For author = Need to Login with registered email and password
+ * For admin : username=admin@admin.com & password=secret
+ * For author : Need to Login with registered email and password
 ## Index(admin/index)
 
 Only admin can access this page. Admin can also edit, delete and comment on each post.
