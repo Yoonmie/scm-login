@@ -7,6 +7,7 @@ if($_SESSION['row']!=null)
         $title=$_POST['title'];
         $text=$_POST['text'];
         $id=$_SESSION['userid'];
+        echo $title, $text ,$id;
         $insertpost="INSERT INTO posts (title,body,user_id) VALUES ('$title','$text','$id')";
         $ret=mysqli_query($db,$insertpost);
         if($_SESSION['row']=="admin"){
@@ -37,7 +38,7 @@ else{
   <title>Create Post</title>
 </head>
 <body id="addpost">
-  <div class="container col-10 col-lg-8 col-sm-10 border">
+  <div class="container col-10 col-lg-8 col-sm-10 border mt-5">
     <form method="POST">
         <h4 class="text-center">Submit new post</h4>
         <div class="col-10 offset-1">

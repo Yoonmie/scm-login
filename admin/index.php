@@ -57,16 +57,7 @@ else{
   <img src="../img/bnr-1.jpg" class="img-fluid" alt="Responsive image" width="100%">
 </div>
 <div class="container col-lg-10 col-sm-12 col-12 main">
-  <div class="input-group add-list mt-5">
-    <input type="text" class="form-control" placeholder="Search this blog">
-    <div class="input-group-append">
-      <button class="btn btn-info" type="button">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-    <a href="post-create.php" class="btn btn-info search offset-1">Add Post</a>
-  </div>
-<!---add post list--->
+
 <div class="row row-cols-1 row-cols-md-2">
   <?php 
     require('../connect.php');

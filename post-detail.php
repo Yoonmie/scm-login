@@ -60,7 +60,12 @@ else {
     <form class="form-inline my-2 my-lg-0">
     <?php
           if(isset($_SESSION['username'])){
-            echo '<a href="admin/logout.php" class="btn btn-danger" >Log-Out</a>';
+            
+            if($role=="author")
+            {
+              echo '<a href="admin/post-create.php" class="btn btn-info search offset-1">Add Post</a>';
+            }
+            echo '<a href="admin/logout.php" class="btn btn-danger ml-3" >Log-Out</a>';
           }
           else{
             echo '<a href="admin/login.php" class="btn btn-info" >Log-In</a>';
@@ -71,16 +76,6 @@ else {
 </nav>
 <!--nav--->
 <div class="container col-lg-10 col-sm-12 col-12 main">
-  <div class="input-group add-list mt-5">
-    <input type="text" class="form-control" placeholder="Search this blog">
-    <div class="input-group-append">
-      <button class="btn btn-info" type="button">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-    <a href="admin/post-create.php" class="btn btn-info search offset-1">Add Post</a>
-  </div>
-<!---add post list--->
 
   <?php 
     require('connect.php');

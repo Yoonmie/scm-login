@@ -36,18 +36,7 @@ require('connect.php');
 <!--nav--->
 <div class="container col-lg-10 col-sm-12 col-12 main">
 <form action="index.php" method="post">
-  <div class="input-group add-list mt-5">
-    <input type="text" class="form-control" placeholder="Search this blog">
-    <div class="input-group-append">
-      <button class="btn btn-info" type="button">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-  </div>
-<!---add post list--->
 
-
- 
  <div class="row row-cols-1 row-cols-md-2">
   
   <?php 
@@ -57,7 +46,7 @@ require('connect.php');
     $postid= $postrow['id'];
   ?> 
   <div class="col mb-4 mt-5">
-    <div class="card mt-5 border-info h-100">
+    <div class="card  border-info h-100">
     <div class="card-header bg-info text-white h-50"> 
         <a href="post-detail.php?pid=<?php echo $postrow['id']?>"><h3 class="text-white"><?php echo $postrow['title']?> </h3></a>
         <span class="blog-username">published by <a href="post.php?uid=<?php echo $postrow['user_id']?>" class="text-white border-bottom"><?php echo $postrow['name']?></a></span>

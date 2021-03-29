@@ -38,7 +38,8 @@ if($_SESSION['row']=="")
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a href="logout.php" class="btn btn-danger" >Log-Out</a>
+        <a href="post-create.php" class="btn btn-info search offset-1">Add Post</a>
+        <a href="logout.php" class="btn btn-danger ml-3" >Log-Out</a>
       </form>
     </div>
   </nav>
@@ -47,7 +48,7 @@ if($_SESSION['row']=="")
   <img src="../img/bnr-1.jpg" class="img-fluid" alt="Responsive image" width="100%">
 </div>
 <div class="container col-lg-10 col-sm-12 col-12 main">
-  <div class="input-group add-list mt-5">
+  <!-- <div class="input-group add-list mt-5">
     <input type="text" class="form-control" placeholder="Search this blog">
     <div class="input-group-append">
       <button class="btn btn-info" type="button">
@@ -55,7 +56,7 @@ if($_SESSION['row']=="")
       </button>
     </div>
     <a href="post-create.php" class="btn btn-info search offset-1">Add Post</a>
-  </div>
+  </div> -->
 <!---add post list--->
 <div class="row row-cols-1 row-cols-md-2">
   <?php 
@@ -65,8 +66,8 @@ if($_SESSION['row']=="")
     while($postrow = mysqli_fetch_assoc($post_result)): 
     $postid= $postrow['id'];
 ?> 
-  <div class="col mb-3 mt-5">
-    <div class="card mt-4 border-info h-100">
+  <div class="col mb-5 mt-3">
+    <div class="card border-info h-100">
     <div class="card-header bg-info text-white h-50"> 
         <a href="../post-detail.php?pid=<?php echo $postrow['id']?>"><h3 class="text-white"><?php echo $postrow['title']?> </h3></a>
         <span class="blog-username">published by <a href="../post.php?uid=<?php echo $postrow['user_id']?>" class="text-white border-bottom"><?php echo $postrow['name']?></a></span>
