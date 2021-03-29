@@ -50,7 +50,7 @@ All users can access each user's posts
 
 ## register
 
-Here is a register page.Users have to choose thier roles(admin or author). Need to register the account before logging in.
+Here is a register page. Need to register the account before logging in.
 
 ## User-List
 
@@ -66,8 +66,9 @@ This page is for deleting user data. Only admin can delete the data.
 
 ## login
 
-Here is a login page and can only login the account with registered email and account. If not u cannot log into the account and go to home page.
-
+Here is a login page. If not u cannot log into the account and go to home page.
+ * For admin = username=admin@admin.com & password=secret
+ * For author = Need to Login with registered email and password
 ## Index(admin/index)
 
 Only admin can access this page. Admin can also edit, delete and comment on each post.

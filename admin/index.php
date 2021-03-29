@@ -27,35 +27,28 @@ else{
 <body id="home">
 <form action="index.php" method="post">
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="index.php">BLOG</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#"><?php echo $_SESSION['row']?> <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="register.php">Register <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo $_SESSION['username']?></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Blog Users
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+          <a class="nav-link" href="user-list.php">User-List <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="#"><?php echo $_SESSION['row']?></a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">WELCOME <?php echo $_SESSION['username']?> !</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a href="logout.php" class="btn btn-info" >Log-Out</a>
+        <a href="logout.php" class="btn btn-danger" >Log-Out</a>
       </form>
     </div>
   </nav>
@@ -74,7 +67,7 @@ else{
     <a href="post-create.php" class="btn btn-info search offset-1">Add Post</a>
   </div>
 <!---add post list--->
-
+<div class="row row-cols-1 row-cols-md-2">
   <?php 
     require('../connect.php');
     $userid=$_SESSION['userid'];
@@ -82,33 +75,25 @@ else{
     while($postrow = mysqli_fetch_assoc($post_result)): 
     $postid= $postrow['id'];
     ?> 
-     <table class="border rounded-lg col-12 mt-5 table">
-      <tr class="blog-ttl">
-        <th class="bg-light">
-          <span class="username-ttl"><a href="../post.php?uid=<?php echo $postrow['userid']?>"><?php echo $postrow['name']?></a></span>
-          <span class="icn-list clearFix">
-          <a href="post-delete.php?postid=<?php echo $postrow['id'] ?>" class="icn-close"> <i class="fa fa-times" aria-hidden="true"></i> </a>
-          <a href="post-show.php?postid=<?php echo $postrow['id'] ?>" class="icn-edit"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
-          </span>
-        </th>
-      </tr>
-      <tr>
-        <td class="form-group blog-body">
-            
-            <div class="bodylist p-3">
-            <h3><?php echo $postrow['title']?></h3>
-            <p><?php echo $postrow['body'] ,$_SESSION['username'],$_SESSION['userid']?></p>
-            </div>
-        </td>
-      </tr>
-      <tr> 
-        <td>
-        <form method="POST">
-        <span><h5>Comments</h5></span>
-        <div class="input-group mb-3 text-area">
-          <textarea name="cmt" id="comment" rows="1"></textarea>
-          <button class="btn cmt-icn" name="cmt-icn<?php echo $postid ?>" type="submit"><i class="fa fa-paper-plane arrow-icn" aria-hidden="true" id="arrow-icn"></i></button>
-        </div>
+   <div class="col mb-3 mt-5">
+    <div class="card mt-4 border-info h-100">
+    <div class="card-header bg-info text-white h-50"> 
+        <a href="../post-detail.php?pid=<?php echo $postrow['id']?>"><h3 class="text-white"><?php echo $postrow['title']?> </h3></a>
+        <span class="blog-username">published by <a href="../post.php?uid=<?php echo $postrow['user_id']?>" class="text-white border-bottom"><?php echo $postrow['name']?></a></span>
+    </div>
+    <!---title--->
+
+    <div class="card-body">
+      <p class="card-text"><?php echo $postrow['body']?></p>
+    </div>
+    <!--body--->
+    <form method="POST">
+      <div class="card-comment p-3 bg-light card-footer">
+          <span><h6>Comments</h6></span>
+          <div class="input-group mb-3">
+            <textarea name="cmt" id="comment" rows="1"></textarea>
+            <button class="btn cmt-icn" name="cmt-icn<?php echo $postid ?>" type="submit"><i class="fa fa-paper-plane arrow-icn" aria-hidden="true" id="arrow-icn"></i></button>
+          </div>
 
         <?php 
         require('../connect.php');
@@ -131,14 +116,17 @@ else{
             </div>
         <?php }
         endwhile; ?>
-        </div>
-     </form>
-        </td> 
-      </tr>
-      </table>
-      <?php endwhile; ?>
-      <!--table--> 
-</div> 
+        </div><!--over-flow-->
+        </form>
+      </div><!--comment-->    
+    </div><!--card-->
+    </div><!--col-->
+    <?php endwhile;?>
+  
+  
+
+</div><!--row-->
+</div> <!--container-->
 
   
 </form>
