@@ -25,7 +25,7 @@
 - Open the project into code editor
 - Import blog.db into the database
   * Go to Mysql database
-  * Import cloned database file into Mysql database(blog.db location: db/blog.db)
+  * Import cloned database file into Mysql database(blog.db location: db/blog.sql)
 - Run the project 
 
 ## Admin side
