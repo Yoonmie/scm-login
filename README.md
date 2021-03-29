@@ -8,6 +8,7 @@
 - [Login](#admin/login)
 - [Index](#admin/index)
 - [Post-List](#admin/post-list)
+- [Post-Detail](#admin/post-detail)
 - [Post-Edit](#home)
 - [Post-delete](#home)
 - [Logout](#logout)
@@ -76,6 +77,10 @@ Only admin can access this page. Admin can also edit, delete and comment on each
 ## Post-List
 
 Authors can access the page and commment on each post. They can only edit and delete their posts.
+
+## Post-Detail
+
+Show Detail of the post when users have clicked post title from other page. Users can edit and delete their posts from this page.
 
 ## Post-Edit 
 
