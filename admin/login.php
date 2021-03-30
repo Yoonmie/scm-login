@@ -66,6 +66,7 @@ if(isset($_POST['btnlogin'])) {
     <label for="password">Password</label>
     <input type="password" class="form-control form-control-sm col12" name="pw" id="password">
   </div>
+  <a href="register.php">Register</a>
   <button type="submit" class="btn btn-info col-12 mt-3 mb-3 " name="btnlogin">Log In</button>
   </form>
 </div>

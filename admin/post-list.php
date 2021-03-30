@@ -30,7 +30,7 @@ if($_SESSION['row']=="")
           <a class="nav-link" href="register.php"> Register<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo $_SESSION['row']?></a>
+          <a class="nav-link disabled" href="#"><?php echo $_SESSION['row']?></a>
         </li>
         
         <li class="nav-item">
